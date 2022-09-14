@@ -67,7 +67,7 @@ const gameOver = () => {
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
-  const timeTaken = (finishTime - startTime) / 1000;
+  const timeTaken = Math.round((finishTime - startTime) / 1000);
 
   // show result modal
   resultModal.innerHTML = "";
@@ -99,32 +99,32 @@ const closeModal = () => {
   resultModal.classList.toggle("hidden");
 };
 
-const start = () => {
-  // If already started, do not start again
-  if (startTime) return;
-
-  let count = 3;
-  countdownOverlay.style.display = "flex";
-
-  const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = `<h1>${count}</h1>`;
-
-    // finished timer
-    if (count == 0) {
-      // -------------- START TYPING -----------------
-      document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "none";
-      display.classList.remove("inactive");
-
-      clearInterval(startCountdown);
-      startTime = new Date().getTime();
-    }
-    count--;
-  }, 1000);
-};
-
 // START Countdown
-startBtn.addEventListener("click", start());
+startBtn.addEventListener("click", function () {
+    // If already started, do not start again
+    if (startTime) return;
+  
+    let count = 3;
+    countdownOverlay.style.display = "flex";
+  
+    const startCountdown = setInterval(() => {
+      countdownOverlay.innerHTML = `<h1>${count}</h1>`;
+  
+      // finished timer
+      if (count == 0) {
+        // -------------- START TYPING -----------------
+        document.addEventListener("keydown", typeController);
+        countdownOverlay.style.display = "none";
+        display.classList.remove("inactive");
+  
+        clearInterval(startCountdown);
+        startTime = new Date().getTime();
+      }
+      count--;
+    }, 1000);
+  
+});
+
 
 // If history exists, show it
 displayHistory();
