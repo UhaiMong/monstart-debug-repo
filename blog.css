@@ -1,0 +1,18 @@
+body {
+    background-image: url("./bg.png");
+    background-size: cover;
+    background-position: left top;
+    font-family: "Zilla Slab", serif;
+}
+
+.container{
+    padding: 20px 12px;
+    border: 2px solid crimson;
+    margin: 20px;
+}
+h1,p{
+    color: white;
+    font-size: 20px;
+    background-color: gray;
+    padding: 12px 9px;
+}
