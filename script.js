@@ -8,6 +8,7 @@ const modalBackground = document.getElementById("modal-background");
 // variables
 let userText = "";
 let errorCount = 0;
+let wordCount = 0;
 let startTime;
 let questionText = "";
 
@@ -22,12 +23,16 @@ fetch("./texts.json")
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
+  const newword = e.key;
   
-  const totalWord = userText.split(',');
   // Handle backspace press
   if (newLetter == "Backspace") {
     userText = userText.slice(0, userText.length - 1);
     return display.removeChild(display.lastChild);
+  }
+  if (e.keyCode==32) {
+    ++wordCount;
+    return wordCount;
   }
 
   // these are the valid character we are allowing to type
