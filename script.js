@@ -32,6 +32,7 @@ const typeController = (e) => {
   }
   if (e.keyCode==32) {
     ++wordCount;
+    console.log(wordCount);
   }
 
   // these are the valid character we are allowing to type
@@ -91,7 +92,7 @@ const gameOver = () => {
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount,wordCount);
+  addHistory(questionText, timeTaken, errorCount);
 
   // restart everything
   startTime = null;
